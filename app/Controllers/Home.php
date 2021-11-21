@@ -19,9 +19,8 @@ class Home extends BaseController
     {
         $dataPjlProduk = new PjlProdukModel();
 
-        // Penjualan per produk
-        $data['pjl_produk'] = $dataPjlProduk->findAll();
-        $data['produk_teratas'] = $dataPjlProduk->orderBy('terjual', 'DESC')->findAll(5);
+        $data['tbl_pjl_produk'] = $dataPjlProduk->findAll();
+        // $data['produk_teratas'] = $dataPjlProduk->orderBy('terjual', 'DESC')->findAll(5);
 
         // echo json_encode($data['produk_teratas']);
         return view('index', $data);
@@ -34,10 +33,12 @@ class Home extends BaseController
 
         $dompdf = new Dompdf();
 
-        $data = $this->db->table('tbl_pjl_produk')->where('tbl_pjl_produk >=', $__data['start_periode'])->where('tahun <=', $__data['end_periode'])->orderBy('tahun', 'ASC')->get()->getResult();
+        // $data = $this->db->table('tbl_pjl_produk')->where('tbl_pjl_produk >=', $__data['start_periode'])->where('tahun <=', $__data['end_periode'])->orderBy('tahun', 'ASC')->get()->getResult();
+        // $data = $this->db->table('tbl_pjl_produk')->get()->getResult();
+        $data = $this->db->table('tbl_pjl_produk')->get()->getResult();
 
         if ($data) {
-            $dompdf->loadHtml(view('pdf/laporan', ["barang" => $data]));
+            $dompdf->loadHtml(view('pdf/laporan', ["nama_produk" => $data]));
             $dompdf->setPaper('A4', 'portrait');
             $dompdf->render();
             $dompdf->stream("laporan-per-periode");
