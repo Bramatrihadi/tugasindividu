@@ -20,11 +20,11 @@
       }
     table td{line-height:15px!important; text-align:center!important; border: 1px solid;} */
   </style>
-  <title>Laporan Per Periode</title>
+  <title>Laporan Per Produk</title>
 </head>
 
 <body>
-  <h1 style="text-align: center;">Laporan Per Periode</h1>
+  <h1 style="text-align: center;">Laporan Per Produk</h1>
   <table border="1" width="100%" cellpadding="2" cellspacing="0" style="margin-top: 5px; text-align:center">
     <thead style="background-color: black;color:white;">
       <tr>

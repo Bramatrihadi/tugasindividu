@@ -41,7 +41,7 @@ class Home extends BaseController
             $dompdf->loadHtml(view('pdf/laporan', ["nama_produk" => $data]));
             $dompdf->setPaper('A4', 'portrait');
             $dompdf->render();
-            $dompdf->stream("laporan-per-periode");
+            $dompdf->stream("laporan-per-produk");
 
             session()->setFlashdata('success', 'Laporan berhasil dibuat!');
             return redirect()->to(base_url());
